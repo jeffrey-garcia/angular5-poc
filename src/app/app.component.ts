@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'test app';
+
+  constructor(private ngZone: NgZone) {}
+
+  ngOnInit() {
+    window['ngAppComponent'] = {
+      zone: this.ngZone,
+      component: this,
+      publicFunc1: (value) => this.privateFunc1(value)
+  };
+  }
+
+  ngOnDestroy() {
+    window['ngAppComponent'] = null;
+  }
+
+  privateFunc1(value: any) {
+    console.log("this works perfect: " + value);
+  }
+
 }

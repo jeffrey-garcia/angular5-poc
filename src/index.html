@@ -9,6 +9,17 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <app-root></app-root>
+  <app-root>
+    <!-- define the main app component here -->
+  </app-root>
+
+  <h2>Custom JavaScript operations: </h2>
+
+  <!-- Example directly calling angular's component via javascript --> 
+  <button onClick="javascript:window.ngAppComponent.publicFunc1('test 123')">
+    Invoke Angular component
+  </button>
+  <br/>
+
 </body>
 </html>
