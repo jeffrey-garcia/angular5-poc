@@ -14,7 +14,8 @@ export class AppComponent {
     window['ngAppComponent'] = {
       zone: this.ngZone,
       component: this,
-      publicFunc1: (value) => this.privateFunc1(value)
+      publicFunc1: (value) => this.privateFunc1(value),
+      publicFunc2: () => this.privateFunc2()
   };
   }
 
@@ -24,6 +25,13 @@ export class AppComponent {
 
   privateFunc1(value: any) {
     console.log("this works perfect: " + value);
+  }
+
+  privateFunc2():string {
+    let jsonData: string;
+    jsonData = JSON.stringify( {test:"abc"} );
+    console.log("json data: " + jsonData);
+    return jsonData;
   }
 
 }

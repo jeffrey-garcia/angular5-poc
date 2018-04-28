@@ -8,17 +8,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+
 <body>
   <app-root>
-    <!-- define the main app component here -->
+    <!-- put the angular main's component here -->
   </app-root>
 
   <h2>Custom JavaScript operations: </h2>
 
   <!-- Example directly calling angular's component via javascript --> 
-  <button onClick="javascript:window.ngAppComponent.publicFunc1('test 123')">
-    Invoke Angular component
+  <button style="background:#EFEFEF; cursor:pointer" onClick="javascript:window.ngAppComponent.publicFunc1('test 123')">
+    Invoke Angular component - 1
   </button>
+
+  <script type="text/javascript">
+  function invokeAngular2() {
+    var jsonData;
+    jsonData = window.ngAppComponent.publicFunc2();
+    alert(jsonData);
+  }
+  </script>
+
+  <button style="background:#EFEFEF; cursor:pointer" onClick="javascript:invokeAngular2()">
+      Invoke Angular component -2 
+    </button>
   <br/>
 
 </body>
