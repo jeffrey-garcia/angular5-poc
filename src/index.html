@@ -7,6 +7,37 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <script type="text/javascript">
+    // global variable
+    var jsBridge;
+    /*
+     * Encapsulate the native app bridging
+     * Use JavaScript ES5 prototype-based inheritance
+     */
+    var Android = function() {
+      if (jsBridge) {
+        this._jsBridge = jsBridge;
+      }
+    }
+    Android.prototype.onData = function(jsonData) {
+      console.log("passing jsonData to android: " + jsonData);
+      //_jsBridge.onData(jsonData);
+    };
+
+    var NativeAppInterface = function() {
+      if (navigator.userAgent.match(/Android/i)) {
+        this._instance = new Android();
+        return;
+      }
+    }
+    NativeAppInterface.prototype.onData = function(jsonData) {
+      console.log("passing jsonData to native app: " + jsonData);
+      this._instance.onData(jsonData);
+    };
+
+    var nativeApp = new NativeAppInterface();
+  </script>
 </head>
 
 <body>
@@ -14,11 +45,11 @@
     <!-- put the angular main's component here -->
   </app-root>
 
-  <h2>Custom JavaScript operations: </h2>
+  <h2>Invoke Angular's function from javascript: </h2>
 
   <!-- Example directly calling angular's component via javascript --> 
   <button style="background:#EFEFEF; cursor:pointer" onClick="javascript:window.ngAppComponent.publicFunc1('test 123')">
-    Invoke Angular component - 1
+    ngAppComponent.publicFunc1
   </button>
 
   <script type="text/javascript">
@@ -30,7 +61,7 @@
   </script>
 
   <button style="background:#EFEFEF; cursor:pointer" onClick="javascript:invokeAngular2()">
-      Invoke Angular component -2 
+      ngAppComponent.publicFunc2
     </button>
   <br/>
 
