@@ -8,21 +8,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
+  <!-- TODO: inline avascript should be externalized into app.js and loaded upon the HTML body is rendered -->
   <script type="text/javascript">
     // global variable
-    var jsBridge;
+    var jsBridge; // will automatically map to the javascript bridge registered by the embedded WebView
     /*
      * Encapsulate the native app bridging
      * Use JavaScript ES5 prototype-based inheritance
      */
     var Android = function() {
       if (jsBridge) {
+        console.log("configuring jsBridge...");
         this._jsBridge = jsBridge;
       }
     }
     Android.prototype.onData = function(jsonData) {
       console.log("passing jsonData to android: " + jsonData);
-      //_jsBridge.onData(jsonData);
+      if (this._jsBridge) {
+        this._jsBridge.onData(jsonData);
+      } else {
+        console.warn("jsBridge not registered in device WebView");
+      }
     };
 
     var NativeAppInterface = function() {
