@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>TestApp</title>
-  <base href="/">
+  <base href="./"> <!-- change base href to ./ for running in embedded webview -->
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -56,7 +56,7 @@
   function invokeAngular2() {
     var jsonData;
     jsonData = window.ngAppComponent.publicFunc2();
-    alert(jsonData);
+    console.log("json data: " + jsonData);
   }
   </script>
 

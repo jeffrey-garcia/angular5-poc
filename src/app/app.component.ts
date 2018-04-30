@@ -24,13 +24,13 @@ export class AppComponent {
   }
 
   privateFunc1(value: any) {
-    console.log("this works perfect: " + value);
+    console.log("invoked privateFunc1: " + value);
   }
 
   privateFunc2():string {
     let jsonData: string;
     jsonData = JSON.stringify( {test:"abc"} );
-    console.log("json data: " + jsonData);
+    console.log("invoked privateFunc2: " + jsonData);
     return jsonData;
   }
 
