@@ -10,7 +10,10 @@
   <h2>Invoke Javascript from Angular's function: </h2>
 
   <!-- TODO: data should be managed by the ts component, not from the html -->
-  <button style="background:#EFEFEF; cursor:pointer" onClick="javascript:window['nativeApp'].onData('test')">
-      nativeApp.onData
-    </button>
+  <div class=button-row>
+      <button mat-raised-button color="primary" onClick="javascript:window['nativeApp'].onData('test')">
+          nativeApp.onData
+      </button>
+  </div>
+
 </div>
