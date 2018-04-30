@@ -16,6 +16,7 @@ Angular: 5.2.10
 @schematics/package-update: 0.3.2
 @angular/cdk: 5.2.5
 @angular/material: 5.2.5
+@angular/animations: 5.2.10
 typescript: 2.5.3
 webpack: 3.11.0
 
