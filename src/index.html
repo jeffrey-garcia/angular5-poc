@@ -47,29 +47,35 @@
 </head>
 
 <body>
-  <app-root>
-    <!-- put the angular main's component here -->
-  </app-root>
+  <div>
+      <h2>Invoke Angular's function from javascript: </h2>
+  
+      <!-- Example directly calling angular's component via javascript --> 
+      <button style="background:#EFEFEF; cursor:pointer" onClick="javascript:window.ngAppComponent.publicFunc1('test 123')">
+        ngAppComponent.publicFunc1
+      </button>
+  
+      <script type="text/javascript">
+      function invokeAngular2() {
+        var jsonData;
+        jsonData = window.ngAppComponent.publicFunc2();
+        console.log("json data: " + jsonData);
+      }
+      </script>
+  
+      <button style="background:#EFEFEF; cursor:pointer" onClick="javascript:invokeAngular2()">
+          ngAppComponent.publicFunc2
+        </button>
+      <br/>
+  </div>
 
-  <h2>Invoke Angular's function from javascript: </h2>
-
-  <!-- Example directly calling angular's component via javascript --> 
-  <button style="background:#EFEFEF; cursor:pointer" onClick="javascript:window.ngAppComponent.publicFunc1('test 123')">
-    ngAppComponent.publicFunc1
-  </button>
-
-  <script type="text/javascript">
-  function invokeAngular2() {
-    var jsonData;
-    jsonData = window.ngAppComponent.publicFunc2();
-    console.log("json data: " + jsonData);
-  }
-  </script>
-
-  <button style="background:#EFEFEF; cursor:pointer" onClick="javascript:invokeAngular2()">
-      ngAppComponent.publicFunc2
-    </button>
-  <br/>
+  <!-- put the angular main's component here -->
+  <ion-app style="position: unset; top: 120px;">
+  </ion-app>
+  
+  <!-- put the angular main's component here -->
+  <!-- <app-root>
+  </app-root> -->
 
 </body>
 </html>
